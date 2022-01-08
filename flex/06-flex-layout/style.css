@@ -1,10 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 body {
-  height: 100vh;
+  min-height: 100vh;/* I changed this to min-height instead of height because it sets the minimum height to 100% of the viewport height */
   margin: 0;
   overflow: hidden;
   font-family: Roboto, sans-serif;
+  position: relative; /* I set the position to relative within the body because then child elements can be set with an absolute position later */
+}
+
+.header {
+  display: flex; /* I added this to ensure the whole header remains in a row */
+  justify-content: space-between; /* After dividing each section of the header into two, this property-value pair creates space between the right and left header */
+}
+
+.header .left-links { /* This selector was created to divide the left links of the header from the right links of the header */ 
+  display: flex; /* This places both left links in a row because display:flex defaults to row instead of column  */
+  list-style-type: none; /* Removes bullet points */
+  gap: 30px; /* Creates a gap between both links */
+  padding-left: 10px; /* Decreased the padding on the left to move the items left towards the margin like in the desired outcome */
+}
+
+.header .right-links { /* This selector is the same for .header .left-links except it's for the links on the right instead of left */
+  display: flex;
+  list-style-type: none;
+  gap: 30px;
+  padding-right: 10px;
+}
+
+.content { /* Contains the logo, search bar, and button links */
+  display: flex; /* Creates a container for these items, but flex automatically assumes a row */
+  flex-direction: column; /* Changes the direction to columns */
+  align-items: center; /* Centers all items in the container */
 }
 
 img {
@@ -24,4 +50,27 @@ input {
   padding: 8px 24px;
   width: 400px;
   margin-bottom: 16px;
+}
+
+.footer {
+  display: flex; /* I added this to ensure the whole header remains in a row */
+  justify-content: space-between; /* After dividing each section of the footer into two from the selectors below, this property-value pair creates space between the right and left footer */
+  background: #eeeeee;
+  position: absolute; /* For the body, the position was set to relative so the body remained in a normal position. For the footer since I wanted to move it to the bottom, I set the position to absolute meaning that it's position is relative to the nearest ancestor and in this case would be the body */
+  width: 100%; /* This ensures width from left to right remains across the whole page */
+  bottom: 0; /* This positions the element to the bottom of the first positioned ancestor, which in this case is the body. So, the footer moves to the bottom beginning with 0 */
+}
+
+.footer .left-links { /* This selector was created for the left links of the footer */
+  display: flex; /* This places both left links in a row because display:flex defaults to row instead of column  */
+  list-style-type: none; /* Removes bullet points */
+  padding-left: 10px; /* Decreased the padding on the left to move the items left towards the margin like in the desired outcome */
+  gap: 30px; /* Creates a gap between both links */
+}
+
+.footer .right-links { /* This selector is the same for .footer .left-links except it's for the links on the right instead of left */
+  display: flex;
+  list-style-type: none;
+  padding-right: 10px;
+  gap: 30px;
 }
